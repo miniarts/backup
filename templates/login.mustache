@@ -1,0 +1,78 @@
+{{{ output.doctype }}}
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{ output.page_title }}</title>
+    <link rel="shortcut icon" href="{{{ output.get_favicon }}}" />
+    {{{ output.standard_head_html }}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body {{{ bodyattributes }}}>
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    <header role="banner" class="pos-f-t navbar navbar-full navbar-static-top moodle-has-zindex">
+
+        <div class="container-fluid navbar-nav">
+
+            <div data-region="drawer-toggle">
+                <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn pull-xs-left m-r-1 navbar-toggler" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><span aria-hidden="true"><i class="fa fa-bars" aria-hidden="true"></i></span><span class="sr-only">{{#str}}expand, core{{/str}}</span></button>
+            </div>
+
+            <a href="{{{ config.wwwroot }}}" class="navbar-brand">
+                <div class="logo">
+                    {{#output.get_logo_url }}
+                        <img src="{{ output.get_logo_url }}" alt="{{sitename}}" class="hidden-xs-down">
+                    {{/output.get_logo_url}}
+
+                    {{#output.get_logocompact_url }}
+                        <img src="{{ output.get_logocompact_url }}" alt="{{sitename}}" class="hidden-sm-up">
+                    {{/output.get_logocompact_url}}
+                </div>
+            </a>
+            
+            <div class="navigation">
+                <!-- user_menu -->
+                {{{ output.user_menu }}}
+
+                <!-- navbar_plugin_output -->
+                {{{ output.navbar_plugin_output }}}
+
+                <!-- search_box -->
+                <span class="hidden-md-down">
+                {{{ output.search_box }}}
+                </span>
+            </div>
+            
+            <nav class="nav navbar-nav hidden-md-down">
+                <!-- custom_menu -->
+                {{{ output.custom_menu }}}
+                <!-- page_heading_menu -->
+                {{{ output.page_heading_menu }}}
+            </nav>
+        </div>
+    </header>
+
+    <div id="page" class="container">
+        <div id="page-content">
+            <div id="region-main-box" class="col-xs-12">
+                <section id="region-main">
+                    {{{ output.main_content }}}
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{{ output.standard_footer_html }}}
+{{{ output.standard_end_of_body_html }}}
+
+
+</body>
+</html>
+{{#js}}
+    require(['theme_bloom/loader-base'], function() {});
+{{/js}}
